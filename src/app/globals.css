@@ -1,26 +1,210 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+/* ==========================================================================
+   DESIGN SYSTEM CONFIGURATION - CHINESE TEMPLE THEME
+   ========================================================================== */
+
+@theme {
+  /* ====================
+     COLOR SYSTEM - CHINESE TEMPLE INSPIRED
+     ==================== */
+
+  /* Primary Brand Colors - Vermilion Red & Imperial Palette */
+  --color-primary-50: #fef4f2;
+  --color-primary-100: #fde8e5;
+  --color-primary-200: #fbd5d0;
+  --color-primary-300: #f8b3a9;
+  --color-primary-400: #f28576;
+  --color-primary-500: #e8594a; /* Main Vermilion Red - Temple columns & gates */
+  --color-primary-600: #d43a2b; /* Deep Vermilion */
+  --color-primary-700: #b12d20; /* Rich Imperial Red */
+  --color-primary-800: #92291f; /* Aged Temple Red */
+  --color-primary-900: #7a261f; /* Ancient Lacquer */
+
+  /* Secondary Brand Colors - Ochre Gold & Earth Tones */
+  --color-secondary-50: #f9f7f3;
+  --color-secondary-100: #f0ece4;
+  --color-secondary-200: #e0d8c9;
+  --color-secondary-300: #c8baa3;
+  --color-secondary-400: #ad9676;
+  --color-secondary-500: #947a58; /* Main Ochre Gold - Roof tiles */
+  --color-secondary-600: #82684a; /* Bronze Age Gold */
+  --color-secondary-700: #6b543c; /* Terracotta Tone */
+  --color-secondary-800: #594736; /* Aged Bronze */
+  --color-secondary-900: #4c3d30; /* Ancient Patina */
+
+  /* Neutral Colors - Scholar's Ink & Stone */
+  --color-neutral-50: #f9f9f8;
+  --color-neutral-100: #f1f0ee;
+  --color-neutral-200: #e3e1dd;
+  --color-neutral-300: #cdc9c2;
+  --color-neutral-400: #b3aca2;
+  --color-neutral-500: #9c9388; /* Warm Stone Gray */
+  --color-neutral-600: #867c70; /* Aged Paper */
+  --color-neutral-700: #6f665c; /* Scholar's Ink Wash */
+  --color-neutral-800: #5c544c; /* Dark Slate */
+  --color-neutral-900: #4d4741; /* Deep Ink Stone */
+  --color-neutral-950: #171511; /* Pure Ink Black */
+
+  /* Semantic Colors - Natural Elements */
+  --color-success: #6a9c89; /* Jade Green - Harmony & Nature */
+  --color-warning: #c4a747; /* Gilded Gold - Precious & Important */
+  --color-error: #b3543a; /* Terracotta Clay - Warning Earth Tone */
+  --color-info: #3a5e8c; /* Celestial Blue - Sky & Wisdom */
+
+  /* Background Colors */
+  --color-background-primary: #ffffff;
+  --color-background-secondary: #f9f9f8; /* Light Stone */
+  --color-background-tertiary: #f1f0ee; /* Aged Paper */
+
+  /* Surface Colors */
+  --color-surface-primary: #ffffff;
+  --color-surface-secondary: #f9f7f3; /* Fine Rice Paper */
+  --color-surface-tertiary: #f0ece4; /* Silk Texture */
+
+  /* Text Colors */
+  --color-text-primary: #171511; /* Ink Black - Primary text */
+  --color-text-secondary: #4d4741; /* Dark Slate - Secondary */
+  --color-text-tertiary: #867c70; /* Aged Paper - Tertiary */
+  --color-text-muted: #b3aca2; /* Stone Gray - Muted */
+
+  /* ====================
+     ACCENT COLORS - CULTURAL ELEMENTS
+     ==================== */
+  --color-accent-jade: #6a9c89;
+  --color-accent-celestial: #3a5e8c;
+  --color-accent-clay: #b3543a;
+  --color-accent-gold: #c4a747;
+  --color-accent-vermilion: #d43a2b;
+
+  /* ====================
+     BRAND GLOWS - TEMPLE INSPIRED
+     ==================== */
+  --shadow-glow: 0 0 20px rgba(232, 89, 74, 0.15); /* Vermilion glow */
+  --shadow-glow-lg: 0 0 40px rgba(232, 89, 74, 0.2); /* Strong vermilion */
+
+  /* ====================
+     GRADIENT SYSTEM - TRADITIONAL PALETTE
+     ==================== */
+  --gradient-primary: linear-gradient(
+    135deg,
+    rgba(232, 89, 74, 0.08) 0%,
+    /* Vermilion */ rgba(148, 122, 88, 0.05) 50%,
+    /* Ochre */ rgba(255, 255, 255, 0) 100%
+  );
+
+  --gradient-secondary: linear-gradient(
+    135deg,
+    rgba(148, 122, 88, 0.1) 0%,
+    /* Ochre */ rgba(232, 89, 74, 0.05) 100% /* Vermilion */
+  );
+
+  --gradient-scholar: linear-gradient(
+    to bottom right,
+    var(--color-neutral-100),
+    var(--color-secondary-100)
+  );
+
+  /* ====================
+     ELEVATION SYSTEM - UPDATED SHADOWS
+     ==================== */
+  --shadow-sm: 0 1px 2px 0 rgba(23, 21, 17, 0.05);
+  --shadow-base: 0 1px 3px 0 rgba(23, 21, 17, 0.1),
+    0 1px 2px 0 rgba(23, 21, 17, 0.06);
+  --shadow-md: 0 4px 6px -1px rgba(23, 21, 17, 0.1),
+    0 2px 4px -1px rgba(23, 21, 17, 0.06);
+  --shadow-lg: 0 10px 15px -3px rgba(23, 21, 17, 0.1),
+    0 4px 6px -2px rgba(23, 21, 17, 0.05);
+  --shadow-xl: 0 20px 25px -5px rgba(23, 21, 17, 0.1),
+    0 10px 10px -5px rgba(23, 21, 17, 0.04);
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
+/* ==========================================================================
+   BASE STYLES - UPDATED FOR TEMPLE THEME
+   ========================================================================== */
 
-@media (prefers-color-scheme: dark) {
+@layer base {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    color-scheme: light;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+  }
+
+  html {
+    font-family: var(--font-family-sans);
+    line-height: 1.6;
+  }
+
+  body {
+    background-color: var(--color-background-primary);
+    color: var(--color-text-primary);
+  }
+
+  /* Focus Management - Using Temple Colors */
+  :focus-visible {
+    outline: 2px solid var(--color-primary-500); /* Vermilion focus ring */
+    outline-offset: 2px;
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+/* ==========================================================================
+   UTILITY CLASSES - TEMPLE THEME ADDITIONS
+   ========================================================================== */
+
+@layer utilities {
+  /* Gradient Backgrounds - Temple Inspired */
+  .bg-gradient-temple {
+    background-image: linear-gradient(
+      135deg,
+      rgba(232, 89, 74, 0.1) 0%,
+      rgba(148, 122, 88, 0.05) 100%
+    );
+  }
+
+  .bg-gradient-aged {
+    background-image: linear-gradient(
+      to bottom right,
+      var(--color-secondary-200),
+      var(--color-neutral-100)
+    );
+  }
+
+  /* Text Gradients - Cultural Colors */
+  .text-gradient-vermilion {
+    background: linear-gradient(
+      135deg,
+      var(--color-primary-600),
+      var(--color-primary-800)
+    );
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  .text-gradient-ochre {
+    background: linear-gradient(
+      135deg,
+      var(--color-secondary-600),
+      var(--color-secondary-800)
+    );
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  /* Cultural Accent Borders */
+  .border-vermilion {
+    border-color: var(--color-primary-500);
+  }
+
+  .border-ochre {
+    border-color: var(--color-secondary-500);
+  }
+
+  .border-jade {
+    border-color: var(--color-accent-jade);
+  }
 }
+
+/* Rest of your original CSS remains the same below this point */
